@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Answer Submission</title>
+  <style>
+    /* Styles for the toggle switch */
+    .toggle {
+      position: fixed;
+      top: 0;
+      right: 0;
+      margin: 10px;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+
+    .toggle input[type="checkbox"] {
+      display: none;
+    }
+
+    .toggle label {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 34px;
+      background-color: #ddd;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .toggle label:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+    }
+
+    .toggle input[type="checkbox"]:checked + label {
+      background-color: #0077cc;
+    }
+
+    .toggle input[type="checkbox"]:checked + label:after {
+      transform: translateX(26px);
+    }
+
+    /* Rest of the styles */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #1c2a4e;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #2c3e50;
+      color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      font-size: 16px;
+      box-sizing: border-box;
+      outline: none;
+      background-color: #34495e;
+      color: #fff;
+    }
+    input[type="text"]:focus {
+      border-bottom-color: #0077cc;
+    }
+    button[type="submit"] {
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    button[type="submit"]:hover {
+      background-color: #005fa3;
+    }
+    .message {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #0077cc;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      transform: translateY(100%);
+      transition: transform 0.5s ease-out;
+    }
+
+    .message.show {
+      transform: translateY(0);
+    }
+
+    /* Light mode styles */
+    .light-mode body {
+      background-color: #fff;
+      color: #000;
+    }
+    .light-mode form {
+      background-color: #eee;
+      color: #000;
+    }
+    .light-mode input[type="text"] {
+      background-color: #fff;
+      color: #000;
+      border-bottom-color: #00ff00;
+    }
+    .light-mode button[type="submit"] {
+      background-color: #00ff00;
+      color: #fff;
+    }
+    .light-mode .message {
+      background-color: #00ff00;
+    }
+  </style>
+  <script>
+    function onInputChange(event) {
+      var inputField = event.target;
+      inputField.value = inputField.value.replace(/[^\d]/g, '').substring(0, 5);
+    }
+    
+    function onSubmit() {
+      var inputField = document.getElementById('inputField');
+      var inputFieldValue = inputField.value;
+
+      if (/^\d{5}$/.test(inputFieldValue)) {
+        google.script.run.processForm({ inputField: inputFieldValue });
+        
+        inputField.value = '';  // Clear the input field
+        
+        var message = document.createElement('div');
+        message.innerText = 'Submitted ' + inputFieldValue;
+        message.classList.add('message');
+        document.body.appendChild(message);
+        setTimeout(function() {
+          message.classList.add('show');
+        }, 100);
+        setTimeout(function() {
+          message.classList.remove('show');
+        }, 3000);
+        setTimeout(function() {
+          message.remove();
+        }, 3500);
+      } else {
+        var message = document.createElement('div');
+        message.innerText = 'Please enter a valid 5-digit number.';
+        message.classList.add('message');
+        message.style.backgroundColor = '#f44336';
+        document.body.appendChild(message);
+        setTimeout(function() {
+          message.classList.add('show');
+        }, 100);
+        setTimeout(function() {
+          message.classList.remove('show');
+        }, 3000);
+        setTimeout(function() {
+          message.remove();
+        }, 3500);
+      }
+      
+      return false;
+    }
+
+    function onToggleChange(event) {
+      var body = document.querySelector('body');
+      if (event.target.checked) {
+        body.classList.remove('light-mode');
+        body.style.backgroundColor = '#1c2a4e';
+      } else {
+        body.classList.add('light-mode');
+        body.style.backgroundColor = '#fff';
+      }
+    }
+  </script>
+</head>
+<body>
+    <div class="toggle">
+        <input type="checkbox" id="toggleSwitch" checked onchange="onToggleChange(event)">
+        <label for="toggleSwitch"></label>
+    </div>
+  <form onsubmit="return onSubmit()">
+    <label for="inputField" style="font-size: 24px; margin-bottom: 10px;">Enter a 5-digit number:</label>
+    <input type="text" id="inputField" name="inputField" oninput="onInputChange(event)" autocomplete="off" autofocus>
+    <button type="submit" style="margin-top: 10px;">Submit Answer</button>
+  </form>
+</body>
+</html>
