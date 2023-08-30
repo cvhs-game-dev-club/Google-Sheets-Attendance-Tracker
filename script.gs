@@ -10,7 +10,7 @@ function processForm(form) {
   var sheetName = Utilities.formatDate(currentTime, Session.getScriptTimeZone(), "M/d/yyyy");
   var sheet = activeSpreadsheet.getSheetByName(sheetName);
   if (!sheet) {
-    sheet = activeSpreadsheet.insertSheet(sheetName);
+    sheet = activeSpreadsheet.insertSheet(sheetName, 0);
     sheet.appendRow(["Student ID", "Current Time", "Period"]);
   }
   var period = getPeriod(currentTime);
@@ -57,7 +57,7 @@ function getPeriod(currentTime) {
       period = "Lunch";
     } else if (hour == 13 && minute >= 40 || hour == 15 && minute <= 19) {
       period = "Period 5";
-    } else if (hour == 15 && minute >= 20) {
+    } else if (hour >= 15 && minute >= 20) {
       period = "After School";
     } else {
         period = "Passing Period";
@@ -76,7 +76,7 @@ function getPeriod(currentTime) {
       period = "Lunch";
     } else if (hour == 13 && minute >= 40 || hour == 15 && minute <= 19) {
       period = "Period 6";
-    } else if (hour == 15 && minute >= 20) {
+    } else if (hour >= 15 && minute >= 20) {
       period = "After School";
     } else {
         period = "Passing Period";
