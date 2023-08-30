@@ -4,8 +4,8 @@
 
 1. Open your Google Sheets document.
 2. Click on the **Extensions** menu and select **Apps Script**.
-3. In the script editor, copy and paste the code from `script.gs` file.
-4. In the script editor, copy and paste the code from `index.html` file.
+3. In the script editor, copy and paste the code from `script.gs` file in a file named `script.gs`.
+4. In the script editor, copy and paste the code from `index.html` file in a file named `index.html`.
 5. Hit the **Deploy** button and select **New deployment**.
 6. Hit on the **Gear** button and select **Web app**.
 7. Hit the **Deploy** button.
@@ -18,4 +18,4 @@ That's it! You can now use this script to track student attendance in your Googl
 
 1. Open the **Current web app URL** in your browser.
 2. Enter the student's ID number and hit **Submit**.
-3. The script will add the student ID number, current time, and period to the a sheet named after the current date.
+3. The script will add the student ID number, current time, and period to the sheet named after the current date.
