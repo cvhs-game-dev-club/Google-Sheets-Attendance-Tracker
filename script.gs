@@ -24,7 +24,6 @@ function getPeriod(currentTime) {
   var period = "";
   var currentDate = Utilities.formatDate(currentTime, Session.getScriptTimeZone(), "M/d/yyyy");
 
-
   // Special Schedule (1:30 Dismissal) on Friday, Sept. 1, 2023
   if (currentDate == "9/1/2023") {
     if (hour == 7 && minute >= 48 || hour == 8 && minute <= 24) {
@@ -78,7 +77,7 @@ function getPeriod(currentTime) {
         period = "Passing Period";
     }
     }
-  
+
   // Pre-PSAT on Tuesday, October 10, 2023
   else if (currentDate == "10/10/2023") {
     if (hour == 8 && minute >= 35 || hour == 9 && minute <= 28) {
@@ -258,7 +257,7 @@ function getPeriod(currentTime) {
   }
 
     // SBAC Odd Days
-  else if (currentDate == "4/23/24" || currentDate == "4/25/24") {
+  else if (currentDate == "4/23/2024" || currentDate == "4/25/2024") {
     if (hour == 7 && minute >= 27 || hour == 8 && minute <= 24) {
       period = "Period 0";
     } else if (hour == 8 && minute >= 30 || hour == 10 && minute <= 28) {
@@ -281,7 +280,7 @@ function getPeriod(currentTime) {
   }
 
   // SBAC Even Days
-  else if (currentDate == "4/22/24" || currentDate == "4/24/24") {
+  else if (currentDate == "4/22/2024" || currentDate == "4/24/2024") {
     if (hour == 7 && minute >= 27 || hour == 8 && minute <= 24) {
       period = "Period 0";
     } else if (hour == 8 && minute >= 30 || hour == 10 && minute <= 28) {
