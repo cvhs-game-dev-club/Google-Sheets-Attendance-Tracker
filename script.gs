@@ -24,6 +24,7 @@ function getPeriod(currentTime) {
   var period = "";
   var currentDate = Utilities.formatDate(currentTime, Session.getScriptTimeZone(), "M/d/yyyy");
 
+
   // Special Schedule (1:30 Dismissal) on Friday, Sept. 1, 2023
   if (currentDate == "9/1/2023") {
     if (hour == 7 && minute >= 48 || hour == 8 && minute <= 24) {
@@ -76,7 +77,8 @@ function getPeriod(currentTime) {
     } else {
         period = "Passing Period";
     }
-
+    }
+  
   // Pre-PSAT on Tuesday, October 10, 2023
   else if (currentDate == "10/10/2023") {
     if (hour == 8 && minute >= 35 || hour == 9 && minute <= 28) {
@@ -95,7 +97,7 @@ function getPeriod(currentTime) {
       period = "Period 3";
     } else if (hour == 13 && minute >= 57 || hour == 14 && minute <= 50) {
       period = "Period 4";
-    } else if (hour == 14 && minute >= 56 || hour >= 15)
+    } else if (hour == 14 && minute >= 56 || hour >= 15) {
       period = "After School";
     } else if (hour >= 0 && hour <= 7) {
       period = "Before School";
