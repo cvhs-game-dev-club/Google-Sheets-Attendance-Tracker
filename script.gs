@@ -34,16 +34,20 @@ function getPeriod(currentTime) {
       period = "Period 3";
     } else if (hour == 11 && minute >= 54 || hour == 12 && minute <= 53) {
       period = "Period 4";
+    } else if (hour == 12 && minute >= 54 || hour == 13 && minute <= 28) {
+      period = "Lunch";
     } else if (hour == 13 && minute >= 35 || hour == 14 && minute <= 31) {
       period = "Period 5";
     } else if (hour == 14 && minute >= 38 || hour == 15 && minute <= 34) {
       period = "Period 6";
-    } else if (hour >= 15 && minute >= 35) {
+    } else if (hour >= 15 && minute >= 35 || hour >= 16 ) {
       period = "After School";
+    } else if (hour >= 0 && hour <= 7) {
+      period = "Before School";
     } else {
         period = "Passing Period";
     }
-
+    
   } else if (dayOfWeek == 2) {
     if (hour == 7 && minute >= 54 || hour == 8 && minute <= 23) {
       period = "Period 0";
@@ -57,8 +61,10 @@ function getPeriod(currentTime) {
       period = "Lunch";
     } else if (hour == 13 && minute >= 40 || hour == 15 && minute <= 19) {
       period = "Period 5";
-    } else if (hour >= 15 && minute >= 20) {
+    } else if (hour >= 15 && minute >= 20 || hour >= 16) {
       period = "After School";
+    } else if (hour >= 0 && hour <= 7) {
+      period = "Before School";
     } else {
         period = "Passing Period";
     }
@@ -76,8 +82,10 @@ function getPeriod(currentTime) {
       period = "Lunch";
     } else if (hour == 13 && minute >= 40 || hour == 15 && minute <= 19) {
       period = "Period 6";
-    } else if (hour >= 15 && minute >= 20) {
+    } else if (hour >= 15 && minute >= 20 || hour >= 16) {
       period = "After School";
+    } else if (hour >= 0 && hour <= 7) {
+      period = "Before School";
     } else {
         period = "Passing Period";
     }
