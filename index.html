@@ -133,6 +133,9 @@
     .light-mode input[type="text"] {
       background-color: #fff;
       color: #000;
+      border-bottom-color: #ccc;
+    }
+    .light-mode input[type="text"]:focus {
       border-bottom-color: #00ff00;
     }
     .light-mode button[type="submit"] {
@@ -141,6 +144,23 @@
     }
     .light-mode .message {
       background-color: #00ff00;
+    }
+    .light-mode input[type="text"]:focus {
+      border-bottom-color: #00ff00;
+    }
+    .made-with-love {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      font-size: 12px;
+      color: #ccc;
+    }
+    .made-with-love a {
+      color: #ccc;
+      text-decoration: none;
+    }
+    .made-with-love a:hover {
+      text-decoration: underline;
     }
   </style>
   <script>
@@ -159,7 +179,7 @@
         inputField.value = '';  // Clear the input field
         
         var message = document.createElement('div');
-        message.innerText = 'You Student ID "' + inputFieldValue + '" has been submitted.';
+        message.innerText = 'Your student ID "' + inputFieldValue + '" has been submitted.';
         message.classList.add('message');
         document.body.appendChild(message);
         setTimeout(function() {
@@ -213,5 +233,8 @@
     <input type="text" id="inputField" name="inputField" oninput="onInputChange(event)" autocomplete="off" autofocus>
     <button type="submit" style="margin-top: 10px;">Submit Answer</button>
   </form>
+  <div class="made-with-love">
+    <a href="https://www.cvhs.dev/" target="_blank">Made with ❤️ from Game Dev Club</a>
+  </div>
 </body>
 </html>
