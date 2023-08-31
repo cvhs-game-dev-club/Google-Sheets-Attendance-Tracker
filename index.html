@@ -75,15 +75,16 @@
     }
     input[type="text"] {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
+      padding: 40px;
+      margin-bottom: 20px;
       border: none;
       border-bottom: 2px solid #ccc;
-      font-size: 16px;
+      font-size: 40px;
       box-sizing: border-box;
       outline: none;
       background-color: #34495e;
       color: #fff;
+      text-align: center;
     }
     input[type="text"]:focus {
       border-bottom-color: #0077cc;
@@ -113,6 +114,7 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
       transform: translateY(100%);
       transition: transform 0.5s ease-out;
+      text-align: center;
     }
 
     .message.show {
@@ -157,7 +159,7 @@
         inputField.value = '';  // Clear the input field
         
         var message = document.createElement('div');
-        message.innerText = 'Submitted ' + inputFieldValue;
+        message.innerText = 'You Student ID "' + inputFieldValue + '" has been submitted.';
         message.classList.add('message');
         document.body.appendChild(message);
         setTimeout(function() {

@@ -4,8 +4,8 @@
 
 1. Open your Google Sheets document.
 2. Click on the **Extensions** menu and select **Apps Script**.
-3. In the script editor, copy and paste the code from `script.gs` file in a file named `script.gs`.
-4. In the script editor, copy and paste the code from `index.html` file in a file named `index.html`.
+3. In the script editor, copy and paste the code from [`script.gs`](https://github.com/cvhs-game-dev-club/Google-Sheets-Attendance-Tracker/blob/main/script.gs) file in a file named `script.gs`.
+4. In the script editor, copy and paste the code from [`index.html`](https://github.com/cvhs-game-dev-club/Google-Sheets-Attendance-Tracker/blob/main/index.html) file in a file named `index.html`.
 5. Hit the **Deploy** button and select **New deployment**.
 6. Hit on the **Gear** button and select **Web app**.
 7. Hit the **Deploy** button.
